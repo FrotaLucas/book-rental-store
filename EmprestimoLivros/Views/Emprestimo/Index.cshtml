@@ -37,7 +37,7 @@
                     <td>@emprestimo.Fornecedor</td>
                     <td>@emprestimo.LivroEmprestado</td>
                     <td>@emprestimo.dataUltimaAtualizacao</td>
-                    <td>
+                    <td  class="d-flex">
                             <a class="btn btn-warning mx-2" asp-controller="Emprestimo" asp-action="Editar" asp-route-id="@emprestimo.Id"><i class="bi bi-pencil-square mx-2"></i> Editar</a>
                             <a class="btn btn-danger mx-2" asp-controller="Emprestimo" asp-action="Excluir" asp-route-id="@emprestimo.Id"><i class="bi bi-trash3 mx-2"></i>Excluir</a>
                     </td>
