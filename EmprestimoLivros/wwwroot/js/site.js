@@ -28,7 +28,10 @@ $(document).ready(function () {
                 "sortDescending": ": activate to sort column descending"
             }
         },
-        "lengthMenu": [5, 10, 20, 50, 100]
+        "lengthMenu": [5, 10, 20, 50, 100],
+        "autoWidth": true,
+        /*scrollY: 400,*/
+
 
     });
 
