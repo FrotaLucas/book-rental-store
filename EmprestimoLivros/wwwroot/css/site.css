@@ -1,18 +1,23 @@
-html {
-  font-size: 14px;
+
+
+.footer {
+    position: unset !important;
+    bottom: unset !important;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+@media (min-width: 1024px) {
+    #id-table {
+        width: 100% !important;
+    }
+
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+
+.dataTables_scroll {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
 }
 
-body {
-  margin-bottom: 60px;
+.custom-link{
+    padding-bottom: 2.5rem;
 }

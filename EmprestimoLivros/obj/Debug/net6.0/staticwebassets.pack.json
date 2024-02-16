@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\EmprestimoLivros.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\lucas\\Projects Visual Studio\\EmprestimoLivros\\EmprestimoLivros\\wwwroot\\css\\Materia.css",
-      "PackagePath": "staticwebassets\\css\\Materia.css"
-    },
-    {
       "Id": "C:\\Users\\lucas\\Projects Visual Studio\\EmprestimoLivros\\EmprestimoLivros\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

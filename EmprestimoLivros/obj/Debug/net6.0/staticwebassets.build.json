@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3WsqmamBQegmOwz6MfOs2O2Y7tOR7BIhXYn73bLizv0=",
+  "Hash": "PVbktbtafBcGa4ZpGHHNzb3Na7mAdb3Z5IeqkPrvq8U=",
   "Source": "EmprestimoLivros",
   "BasePath": "_content/EmprestimoLivros",
   "Mode": "Default",
@@ -49,23 +49,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\lucas\\Projects Visual Studio\\EmprestimoLivros\\EmprestimoLivros\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\EmprestimoLivros.bundle.scp.css"
-    },
-    {
-      "Identity": "C:\\Users\\lucas\\Projects Visual Studio\\EmprestimoLivros\\EmprestimoLivros\\wwwroot\\css\\Materia.css",
-      "SourceId": "EmprestimoLivros",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\lucas\\Projects Visual Studio\\EmprestimoLivros\\EmprestimoLivros\\wwwroot\\",
-      "BasePath": "_content/EmprestimoLivros",
-      "RelativePath": "css/Materia.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\Materia.css"
     },
     {
       "Identity": "C:\\Users\\lucas\\Projects Visual Studio\\EmprestimoLivros\\EmprestimoLivros\\wwwroot\\css\\site.css",

@@ -7,7 +7,7 @@ $(document).ready(function () {
         language: {
             "decimal": "",
             "emptyTable": "No data available in table",
-            "info": "Showing 1 to 5 of 100",
+            "info": "",
             "infoEmpty": "Showing 0 to 0 of 0 entries",
             "infoFiltered": "(filtered from _MAX_ total entries)",
             "infoPostFix": "",
@@ -29,20 +29,21 @@ $(document).ready(function () {
             }
         },
         "lengthMenu": [5, 10, 20, 50, 100],
-        "autoWidth": true,
-        /*scrollY: 400,*/
+        /*"autoWidth": true,*/
+        scrollX: 400,
+        
+        });
 
+    //if ($(window).width() < '1024') {
+    //    $('#id-table td, #id-table th').css({
+    //        'max-width': '200px',
+    //        'overflow': 'hidden',
+    //        'text-overflow': 'ellipsis',
+    //        'white-space': 'nowrap',
 
-    });
+    //    });
+    //}
 
-    //code 1
-     //setTimeout(function () {
-     //   ${".alert"}.fadeOut("slow", function () {
-     //       $(this).alert('close');
-     //   });
-     //}, 5000)
-
-     //code 2
     setTimeout(function () {
         $(".alert").fadeOut("slow", function () {
             $(this).alert('close');
