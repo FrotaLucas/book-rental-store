@@ -6,6 +6,7 @@ namespace EmprestimoLivros.Controllers
 { 
     public class EmprestimoController : Controller
     {
+        //teste
         readonly private ApplicationDbContext _db;
         public EmprestimoController(ApplicationDbContext db)
         {
