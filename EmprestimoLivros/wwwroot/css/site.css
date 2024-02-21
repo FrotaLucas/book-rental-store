@@ -21,3 +21,23 @@
 .custom-link{
     padding-bottom: 2.5rem;
 }
+
+.custom-container1-img {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 1024px) {
+    .custom-container2-img {
+        padding: 100px 0 100px;
+    }
+
+    .custom-container2-img img {
+        max-width: 80% !important;
+
+    }
+
+
+}
