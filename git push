@@ -1,0 +1,35 @@
+[33mcommit b45cb5618dabf7a309aa0572764adeb5ba8e57cf[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: FrotaLucas <lucasdiasfrota@gmail.com>
+Date:   Wed Feb 21 13:17:00 2024 +0100
+
+    test commit
+
+[33mcommit 7db3eef5329607e10edd3d9f80a5b3dd26bf8167[m
+Author: FrotaLucas <lucasdiasfrota@gmail.com>
+Date:   Wed Feb 21 13:12:47 2024 +0100
+
+    add new css styles to mobile version
+
+[33mcommit ab91e627d9ffd722bfaa024957bb8cf4bbf89c56[m
+Author: FrotaLucas <lucasdiasfrota@gmail.com>
+Date:   Fri Feb 16 15:35:45 2024 +0100
+
+    fix bug table mobile and desk
+
+[33mcommit 1b728ee625d9dfb7af87c2f6a7adbfe1b7398bb8[m
+Author: FrotaLucas <lucasdiasfrota@gmail.com>
+Date:   Thu Feb 15 14:14:21 2024 +0100
+
+    add property aotoWidh to table and format date data
+
+[33mcommit 41d08f9c5fc10bde21b179fbb440492078db38a2[m
+Author: FrotaLucas <lucasdiasfrota@gmail.com>
+Date:   Thu Feb 15 13:31:41 2024 +0100
+
+    add d-flex to button
+
+[33mcommit 537d60fc7ee5ebc07e20a76d76d08ef8e09e8f02[m
+Author: FrotaLucas <lucasdiasfrota@gmail.com>
+Date:   Thu Feb 15 13:27:05 2024 +0100
+
+    My first commit
