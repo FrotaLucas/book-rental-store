@@ -6,11 +6,14 @@ namespace EmprestimoLivros.Controllers
 { 
     public class EmprestimoController : Controller
     {
-        //teste
+        private List<EmprestimosModel> contacts;//Lista
+
+
         readonly private ApplicationDbContext _db;
         public EmprestimoController(ApplicationDbContext db)
         {
             _db = db;
+            contacts = new List<EmprestimosModel>();//constructor
         }
 
         public IActionResult Index()
