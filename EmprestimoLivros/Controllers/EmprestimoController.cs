@@ -16,11 +16,20 @@ namespace EmprestimoLivros.Controllers
             contacts = new List<EmprestimosModel>();//constructor
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            IEnumerable<EmprestimosModel> emprestimos = _db.Emprestimos;
-            return View(emprestimos);
+            // Adding some sample contacts
+            contacts.Add(new EmprestimosModel { Recebedor = "John Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now }); ;
+            contacts.Add(new EmprestimosModel { Recebedor = "John Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now }); ;
+            contacts.Add(new EmprestimosModel { Recebedor = "John Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now }); ;
+
+            return View(contacts);
         }
+        //public IActionResult Index()
+        //{
+        //    IEnumerable<EmprestimosModel> emprestimos = _db.Emprestimos;
+        //    return View(emprestimos);
+        //}
 
         [HttpGet]
         public IActionResult Cadastrar()
@@ -61,6 +70,14 @@ namespace EmprestimoLivros.Controllers
 
             return View(emprestimo);
         
+        }
+
+        [HttpPost]
+        public ActionResult AddContact(string recebedor, string fornecedor, string livroEmprestado)
+        {
+            contacts.Add(new EmprestimosModel { Recebedor = recebedor, Fornecedor = fornecedor, LivroEmprestado = livroEmprestado});
+            return RedirectToAction("Index");
+
         }
 
         [HttpPost]
