@@ -6,22 +6,19 @@ namespace EmprestimoLivros.Controllers
 { 
     public class EmprestimoController : Controller
     {
-        private List<EmprestimosModel> contacts;//Lista
-
+        private static List<EmprestimosModel> contacts = new List<EmprestimosModel>();
 
         readonly private ApplicationDbContext _db;
         public EmprestimoController(ApplicationDbContext db)
         {
             _db = db;
-            contacts = new List<EmprestimosModel>();//constructor
+            //contacts.Add(new EmprestimosModel { Recebedor = "Lucas Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now }); ;
+
         }
 
         public ActionResult Index()
         {
             // Adding some sample contacts
-            contacts.Add(new EmprestimosModel { Recebedor = "John Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now }); ;
-            contacts.Add(new EmprestimosModel { Recebedor = "John Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now }); ;
-            contacts.Add(new EmprestimosModel { Recebedor = "John Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now }); ;
 
             return View(contacts);
         }
@@ -73,11 +70,24 @@ namespace EmprestimoLivros.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddContact(string recebedor, string fornecedor, string livroEmprestado)
+        public ActionResult AddContact(EmprestimosModel emprestimo)
         {
-            contacts.Add(new EmprestimosModel { Recebedor = recebedor, Fornecedor = fornecedor, LivroEmprestado = livroEmprestado});
-            return RedirectToAction("Index");
+            string a;
+            if (ModelState.IsValid)
+            {
+                emprestimo.dataUltimaAtualizacao = DateTime.Now;
+                a = emprestimo.Fornecedor;
+                contacts.Add(emprestimo);
+                return RedirectToAction("Index");
+            }
 
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            foreach (var error in errors)
+            {
+                Console.WriteLine($"Validation Error: {error.ErrorMessage}");
+            }
+            // If ModelState is not valid, return to the view with the current model for correction.
+            return View("Cadastrar", emprestimo);
         }
 
         [HttpPost]
@@ -108,6 +118,29 @@ namespace EmprestimoLivros.Controllers
             }
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteContact(EmprestimosModel emprestimoToDelete)
+        {
+           if (ModelState.IsValid)
+            {
+                var contactToRemove = contacts.FirstOrDefault(c =>
+                    c.Recebedor == emprestimoToDelete.Recebedor &&
+                    c.Fornecedor == emprestimoToDelete.Fornecedor &&
+                    c.LivroEmprestado == emprestimoToDelete.LivroEmprestado);
+
+                if (contactToRemove != null)
+                {
+                    // Remove the contact from the list
+                    contacts.Remove(contactToRemove);
+                }
+
+                return RedirectToAction("Index");
+
+            }
+
+            return NotFound();
         }
 
         [HttpPost]
