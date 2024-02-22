@@ -18,8 +18,8 @@ namespace EmprestimoLivros.Controllers
 
         public ActionResult Index()
         {
-            // Adding some sample contacts
-
+            // Adding some sample contacts 
+            //test 
             return View(contacts);
         }
         //public IActionResult Index()
