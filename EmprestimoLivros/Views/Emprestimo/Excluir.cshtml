@@ -10,22 +10,22 @@
     <div class="mb-5 text-center">
         <h1 class="text-light">Exclusão de Emprestimos</h1>
     </div>
-    <form method="post" asp-controller="Emprestimo" asp-action="DeleteContact">
+    <form method="post" asp-controller="Emprestimo" asp-action="Excluir">
 
         <h2>Tem certeza que deseja excluir o  registro abaixo?</h2>
         <div class="mb-3">
             <label for="Recebedor" class="text-light form-label">Recebedor:</label>
-            <input type="text" class="shadow-none form-control" asp-for="Recebedor" id="Recebedor" disabled>
+            <input type="text" class="shadow-none form-control" asp-for="Recebedor" id="Recebedor" readonly>
             <span class="text-danger" asp-validation-for="Recebedor"></span>
         </div>
         <div class="mb-3">
             <label for="Fornecedor" class="text-light form-label">Fornecedor:</label>
-            <input type="text" class="form-control shadow-none" asp-for="Fornecedor" id="Fornecedor" disabled>
+            <input type="text" class="form-control shadow-none" asp-for="Fornecedor" id="Fornecedor" readonly>
             <span class="text-danger" asp-validation-for="Fornecedor"></span>
         </div>
         <div class="mb-3">
             <label class="text-light form-label" for="Livro">Livro:</label>
-            <input type="text" class="form-control shadow-none" asp-for="LivroEmprestado" id="Livro" disabled>
+            <input type="text" class="form-control shadow-none" asp-for="LivroEmprestado" id="Livro" readonly>
             <span class="text-danger" asp-validation-for="LivroEmprestado"></span>
         </div>
         <div class="d-flex gap-5 mt-5">
