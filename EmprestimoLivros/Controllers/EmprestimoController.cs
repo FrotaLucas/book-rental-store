@@ -16,32 +16,31 @@
                 // Add more items if needed
             };
 
-        public EmprestimoController()
+            public EmprestimoController()
             {
-                //EmprestimosModel itema = new EmprestimosModel { Recebedor = "Lucas Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now };
-                //contacts.Add(itema);
-
+            //EmprestimosModel itema = new EmprestimosModel { Recebedor = "Lucas Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now };
+            //contacts.Add(itema);
             }
 
             public ActionResult Index()
-            {
+            {   
+            //foreach(var contact in contacts)
+            //{
+            //    Console.WriteLine("ID: " + contact.Id);
+            //}
             
                 return View(contacts);
             }
-            //public IActionResult Index()
-            //{
-            //    IEnumerable<EmprestimosModel> emprestimos = _db.Emprestimos;
-            //    return View(emprestimos);
-            //}
+          
 
             [HttpGet]
             public IActionResult Cadastrar()  //Qual a difeenca entra IActionResult E ActionResult???????????
             {
-                Console.WriteLine("Cadastrar Get");
-                foreach (EmprestimosModel exemplo in contacts)
-                {
-                    Console.WriteLine(exemplo.Id + exemplo.Recebedor);
-                }
+                //Console.WriteLine("Cadastrar Get");
+                //foreach (EmprestimosModel exemplo in contacts)
+                //{
+                //    Console.WriteLine(exemplo.Id + exemplo.Recebedor);
+                //}
 
             return View();
             }
@@ -120,11 +119,17 @@
             {
                 if(ModelState.IsValid)
                 {
+                    if (emprestimo.Id >= 0 && emprestimo.Id < contacts.Count)
+                    {
+                        contacts[emprestimo.Id].Recebedor = emprestimo.Recebedor;
+                        contacts[emprestimo.Id].Fornecedor = emprestimo.Fornecedor;
+                        contacts[emprestimo.Id].LivroEmprestado = emprestimo.LivroEmprestado;
+                       // Console.WriteLine("Novo Recebedor:" + contacts[emprestimo.Id].Recebedor + "Novo Livro:" + contacts[emprestimo.Id].LivroEmprestado + "Id:" + contacts[emprestimo.Id].Id);
+                        TempData["MensagemSucesso"] = "Edição realizada com sucesso";       
 
-                    contacts[emprestimo.Id] = emprestimo;
-                    Console.WriteLine("Novo Recebedor:" + contacts[emprestimo.Id].Recebedor + "Novo Livro:" + contacts[emprestimo.Id].LivroEmprestado + "Id:" + contacts[emprestimo.Id].Id);
-                    TempData["MensagemSucesso"] = "Edição realizada com sucesso";
+                     }
 
+                    
                     return RedirectToAction("Index");
                 }
 
