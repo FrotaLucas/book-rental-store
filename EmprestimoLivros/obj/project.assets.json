@@ -1981,11 +1981,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas\\Projects Visual Studio\\EmprestimoLivros\\EmprestimoLivros\\EmprestimoLivros.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\Projects_Visual_Studio\\EmprestimoLivros\\EmprestimoLivros\\EmprestimoLivros.csproj",
       "projectName": "EmprestimoLivros",
-      "projectPath": "C:\\Users\\lucas\\Projects Visual Studio\\EmprestimoLivros\\EmprestimoLivros\\EmprestimoLivros.csproj",
+      "projectPath": "C:\\Users\\lucas\\Projects_Visual_Studio\\EmprestimoLivros\\EmprestimoLivros\\EmprestimoLivros.csproj",
       "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas\\Projects Visual Studio\\EmprestimoLivros\\EmprestimoLivros\\obj\\",
+      "outputPath": "C:\\Users\\lucas\\Projects_Visual_Studio\\EmprestimoLivros\\EmprestimoLivros\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
