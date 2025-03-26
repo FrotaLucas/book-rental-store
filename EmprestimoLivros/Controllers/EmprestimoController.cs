@@ -6,28 +6,16 @@
     { 
         public class EmprestimoController : Controller
         {
-            //private static List<EmprestimosModel> contacts = new List<EmprestimosModel>();
+            private readonly ApplicationDbContext _context;
 
-            private static List<EmprestimosModel> contacts = new List<EmprestimosModel>
+            public EmprestimoController(ApplicationDbContext context)
             {
-                new EmprestimosModel { Id = 0, Recebedor = "John", Fornecedor = "Doe", LivroEmprestado = "The Legend", dataUltimaAtualizacao = DateTime.Now },
-                new EmprestimosModel {Id = 1, Recebedor = "Teresa", Fornecedor = "Schutz", LivroEmprestado = "A New World", dataUltimaAtualizacao = DateTime.Now },
-                new EmprestimosModel {Id = 2, Recebedor = "Victor", Fornecedor = "Mahls", LivroEmprestado = "Robin Hood", dataUltimaAtualizacao = DateTime.Now },
-                // Add more items if needed
-            };
-
-            public EmprestimoController()
-            {
-            //EmprestimosModel itema = new EmprestimosModel { Recebedor = "Lucas Doe", Fornecedor = "Lola", LivroEmprestado = "A Revoada", dataUltimaAtualizacao = DateTime.Now };
-            //contacts.Add(itema);
+                _context = context;
             }
 
             public ActionResult Index()
-            {   
-            //foreach(var contact in contacts)
-            //{
-            //    Console.WriteLine("ID: " + contact.Id);
-            //}
+            {
+                var contacts = _context.Emprestimos;
             
                 return View(contacts);
             }
@@ -36,31 +24,27 @@
             [HttpGet]
             public IActionResult Cadastrar()  //Qual a difeenca entra IActionResult E ActionResult???????????
             {
-                //Console.WriteLine("Cadastrar Get");
-                //foreach (EmprestimosModel exemplo in contacts)
-                //{
-                //    Console.WriteLine(exemplo.Id + exemplo.Recebedor);
-                //}
 
-            return View();
+              return View();
             }
 
 
             [HttpGet]
             public ActionResult Editar(int? id)
             {
-                if (id == null)
-                {
-                    return NotFound();
-                }
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-                EmprestimosModel emprestimo = contacts.FirstOrDefault(x => x.Id == id); 
+            EmprestimosModel emprestimo = _context.Emprestimos.FirstOrDefault(x => x.Id == id);
 
-                if (emprestimo == null)
-                {
-                    return NotFound();
-                }
-                return View(emprestimo);
+            if (emprestimo == null)
+            {
+                return NotFound();
+            }
+
+            return View(emprestimo);
             }
 
 
@@ -68,18 +52,20 @@
             public ActionResult Excluir(int? id)
             {
 
-                if (id == null)
-                {
-                    return NotFound();
-                }
-                //Console.WriteLine(id);
-                EmprestimosModel chosenContact = contacts.FirstOrDefault( x => x.Id == id);
-                if (chosenContact == null)
-                {
-                    return NotFound();
-                }
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-                return View(chosenContact);
+            EmprestimosModel dbBook = _context.Emprestimos.FirstOrDefault(x => x.Id == id);
+
+            if (dbBook == null)
+            {
+                return NotFound();
+            }
+
+
+                return View(dbBook);
 
             }
 
@@ -87,78 +73,61 @@
             [HttpPost]
             public ActionResult Cadastrar(EmprestimosModel emprestimo)
             {
-           
-                if (ModelState.IsValid)
-                {
-                    emprestimo.Id = contacts.Count();
-                    emprestimo.dataUltimaAtualizacao = DateTime.Now;
-                
-                    contacts.Add(emprestimo);
-                    Console.WriteLine("Cadastrar Post");
-                    foreach (EmprestimosModel exemplo in contacts)
-                    {
-                        Console.WriteLine(exemplo.Id + exemplo.Recebedor);
-                    }
-                //Console.WriteLine("Lenght:"+ contacts.Count());
-                return RedirectToAction("Index");
-                }
 
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
-                foreach (var error in errors)
-                {
-                    Console.WriteLine($"Validation Error: {error.ErrorMessage}");
-                }
-                // If ModelState is not valid, return to the view with the current model for correction.
-                return View("Cadastrar", emprestimo);
+            if (ModelState.IsValid)
+            {
+                emprestimo.dataUltimaAtualizacao = DateTime.Now;
+
+                _context.Emprestimos.Add(emprestimo);
+                _context.SaveChanges();
+                TempData["MensagemSucesso"] = "Book save succesfully !";
+
+                return RedirectToAction("Index");
             }
+
+            return View("Cadastrar", emprestimo);
+        }
 
      
 
             [HttpPost]
             public IActionResult Editar(EmprestimosModel emprestimo)
             {
-                if(ModelState.IsValid)
-                {
-                    if (emprestimo.Id >= 0 && emprestimo.Id < contacts.Count)
-                    {
-                        contacts[emprestimo.Id].Recebedor = emprestimo.Recebedor;
-                        contacts[emprestimo.Id].Fornecedor = emprestimo.Fornecedor;
-                        contacts[emprestimo.Id].LivroEmprestado = emprestimo.LivroEmprestado;
-                       // Console.WriteLine("Novo Recebedor:" + contacts[emprestimo.Id].Recebedor + "Novo Livro:" + contacts[emprestimo.Id].LivroEmprestado + "Id:" + contacts[emprestimo.Id].Id);
-                        TempData["MensagemSucesso"] = "Edição realizada com sucesso";       
+                    if (ModelState.IsValid)
+             {
+                var emprestimoDB = _context.Emprestimos.Find(emprestimo.Id);
 
-                     }
 
-                    
-                    return RedirectToAction("Index");
-                }
+                emprestimoDB.LivroEmprestado = emprestimo.LivroEmprestado;
+                emprestimoDB.Recebedor = emprestimo.Recebedor;
+                emprestimoDB.Fornecedor = emprestimo.Fornecedor;
 
-                return View();
+
+                _context.Emprestimos.Update(emprestimoDB);
+                _context.SaveChanges();
+
+                TempData["MensagemSucesso"] = "Edição succesfully Edited!";
+
+                return RedirectToAction("Index");
+            }
+
+            TempData["MensagemErro"] = "Error while trying to save book!";
+            return View(emprestimo);
             }
 
             [HttpPost]
             public ActionResult Excluir(EmprestimosModel emprestimoToDelete)
             {
-                Console.WriteLine(emprestimoToDelete.Id);
-                if (ModelState.IsValid)
-                {
-                    var contactToRemove = contacts.FirstOrDefault(c =>
-                        c.Recebedor == emprestimoToDelete.Recebedor &&
-                        c.Fornecedor == emprestimoToDelete.Fornecedor &&
-                        c.LivroEmprestado == emprestimoToDelete.LivroEmprestado);
-
-                    if (contactToRemove != null)
-                    {
-                        // Remove the contact from the list
-                        contacts.Remove(contactToRemove);
-                    }
-
-                    return RedirectToAction("Index");
-
-                }
-
-                 return NotFound();
+            if (emprestimoToDelete == null)
+            {
+                return NotFound();
             }
+
+            _context.Emprestimos.Remove(emprestimoToDelete);
+            _context.SaveChanges();
+            TempData["MensagemSucesso"] = "Remoção realizada com sucesso!";
+            return RedirectToAction("Index");
+        }
 
 
         }
